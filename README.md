@@ -10,3 +10,4 @@ user should be able to:
 The below screenshot is the ER Diagram of this project.
 
 ![Tux, ER diagram](/public/images/ER_diagram.png)
+

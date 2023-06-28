@@ -9,7 +9,7 @@ const Registerform = () => {
 <label for="password">Password</label>
 <input type="password" name="password" id="password"></input>
 <nav>
-<p>Already user LOGIN HERE? <a href="login.html">Login</a></p>
+<p>Already user LOGIN HERE? <a href="login.js">Login</a></p>
 </nav>
 <input type="submit" class="submit-button" value="Register"></input>
 </div>

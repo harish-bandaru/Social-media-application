@@ -21,7 +21,7 @@ router
  })
 .put('/updatePost', async (req,res) => {
     try{
-     const post = await Post.updatePost(req.body.id,req.body.newText);  
+     const post = await Post.updatePost(req.body.userID, req.body.newText);  
      res.send({...post, password: undefined});
     } catch(error){
       res.status(401).send({message: error.message});

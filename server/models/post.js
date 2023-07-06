@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const postSchema = new mongoose.Schema({
-  userID: String,
+  username: String,
   posttext: String
 })
 
@@ -9,7 +9,7 @@ const Post = mongoose.model("Post", postSchema);
 
 async function create(userID, posttext) {
     const newPost = await Post.create({
-      userID: userID,
+      username: userID,
       posttext: posttext
 
     });
@@ -37,7 +37,7 @@ async function deletePost(id) {
   
 // utility functions
 async function getPost(userID) {
-    return await Post.findOne({ "userID": userID});
+    return await Post.findOne({ "username": userID});
   }
   
   // 5. export all functions we want to access in route files

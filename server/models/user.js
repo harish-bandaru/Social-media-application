@@ -56,5 +56,5 @@ async function getUser(username) {
     return await User.findOne({ "username": username});
   }
   
-  // 5. export all functions we want to access in route files
-  module.exports = {register, login, updatePassword, deleteUser, getUser};
+// 5. export all functions we want to access in route files
+module.exports = {register, login, updatePassword, deleteUser, getUser};

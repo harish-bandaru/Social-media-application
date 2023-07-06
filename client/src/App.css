@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #043ce4;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+form{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: medium;
+  font-style: italic;
+  box-sizing: border-box;
+  padding: 50px;
+  border-radius: 1rem;
+  background-color: aliceblue;
+  border: 4px solid black;
+  display: inline-table;
+
+}
+ol{height:200px; width:80%;}
+ol{overflow:hidden; overflow-y:scroll;}

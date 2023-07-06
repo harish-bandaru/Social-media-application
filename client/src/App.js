@@ -1,18 +1,27 @@
 import './App.css';
-import Login from './components/Login.js';
-import Register  from './components/Register.js';
-import Nav from './components/Nav.js';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { UserProvider } from './context/userContext';
+import Loginform from './components/pages/Login.js';
+import Registerform  from './components/pages/Register.js';
+import Profile from './components/pages/Profile.js';
+import Navigation from './components/pages/Nav.js';
 
 function App() {
   return (
     <div className="App">
-      <Nav />
-      <h3>Please Enter LOGIN credentials</h3>
-      <Login />
-      <h3>Please Enter your information to register</h3>
-      <Register />      
+      <UserProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navigation />} >
+            <Route index />
+          <Route path="/login" element={<Loginform />}/>
+          <Route path="/register" element={<Registerform />}/>
+          <Route path="/profile" element={<Profile />}/>
+          </Route>
+        </Routes> 
+      </BrowserRouter>  
+      </UserProvider>   
     </div>
   );
 }
-
 export default App;

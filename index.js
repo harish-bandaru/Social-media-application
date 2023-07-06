@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express'); 
+var cors = require('cors')
 const app = express(); 
 const path = require('path');
 const mongoose = require("mongoose");
@@ -12,7 +13,7 @@ mongoose.connect(process.env.dbURL)
     .catch(error => console.log(error));
 
 app.use(express.json()); 
-
+app.use(cors())
 app.use(express.static(__dirname+"/public"));
 app.get('/', (req,res) => res.sendFile(path.join(__dirname, "/public", "index.html")));
 

@@ -26,7 +26,7 @@ async function fetch(userID) {
 
 //update
 async function updatePost(id, newText) {
-    const post = await post.updateOne({"_id": id}, {$set: { posttext: newText}});
+    const post = await post.updateOne({username: id}, {$set: { posttext: newText}});
     return post;
   }
 
@@ -36,8 +36,8 @@ async function deletePost(id) {
   };
   
 // utility functions
-async function getPost(userID) {
-    return await Post.findOne({ "username": userID});
+async function getPost(username) {
+    return await Post.find({ "username": username});
   }
   
   // 5. export all functions we want to access in route files

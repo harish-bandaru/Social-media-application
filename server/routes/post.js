@@ -5,7 +5,7 @@ const router = express.Router();
 router
 .post('/create', async (req,res) => {
     try{
-     const post = await Post.create(req.body.userID, req.body.posttext);  
+     const post = await Post.create(req.body.username, req.body.posttext);  
      res.send({...post});
     } catch(error){
       res.status(401).send({message: error.message});
@@ -13,7 +13,7 @@ router
  })  
  .post('/fetch', async (req,res) => {
     try{
-     const post = await Post.fetch(req.body.userID);  
+     const post = await Post.fetch(req.body.username);  
      res.send({...post});
     } catch(error){
       res.status(401).send({message: error.message});
@@ -21,7 +21,7 @@ router
  })
 .put('/updatePost', async (req,res) => {
     try{
-     const post = await Post.updatePost(req.body.userID, req.body.newText);  
+     const post = await Post.updatePost(req.body.username, req.body.newText);  
      res.send({...post, password: undefined});
     } catch(error){
       res.status(401).send({message: error.message});

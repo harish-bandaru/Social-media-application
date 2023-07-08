@@ -5,14 +5,9 @@ import { useContext } from "react";
 import UserContext from "../../context/userContext.js"; 
 const Registerform = () => {
     const navigate = useNavigate();
-    const [user, setUser] = useState({
-        username:'',
-        password: '',
-        email:''
-    });
-    const { username, password, email} = user;
-    const onChange = (e) => setUser({...user, [e.target.name]: e.target.value})
-
+    const {user, updateUser} = useContext(UserContext);
+    const { username, email, password} = user;
+    const onChange = (e) => updateUser(e.target.name, e.target.value)
     const onSubmit = (e) => {
       e.preventDefault();
       console.log(user)
@@ -26,6 +21,7 @@ const Registerform = () => {
       
       .then((data) => {
         if(!data.message) {
+         updateUser("authenticated", true)
          navigate("/profile")
         }
   })
@@ -38,21 +34,21 @@ const Registerform = () => {
     return(
         <div>
         <form className = "register-form" onSubmit={onSubmit}>
-         <div class="Registrationform">   
-            <label for="username">User Name</label><br></br>
+         <div className="Registrationform">   
+            <label htmlFor="username">User Name</label><br></br>
             <input type="text" name="username" id="username" onChange={onChange} value={username} required></input>
             <br></br>
-            <label for="email">Email</label><br></br>
+            <label htmlFor="email">Email</label><br></br>
             <input type="email" name="email" id="email" onChange={onChange} value={email} required></input>
             <br></br>
-            <label for="password">Password</label><br></br>
+            <label htmlFor="password">Password</label><br></br>
             <input type="password" name="password" id="password" onChange={onChange} value={password}></input>
             <br></br>
             <nav>
-            <p>Already user LOGIN HERE? <a href="login.js">Login</a></p>
+            <p>Already user LOGIN HERE? <a href="login">Login</a></p>
             </nav>
          </div>
-         <input type="submit" class="submit-button" value="Register"></input>
+         <input type="submit" className="submit-button" value="Register"></input>
          </form>
         </div>
     );

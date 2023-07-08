@@ -3,15 +3,12 @@ import { fetchData } from "../../main.js";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import UserContext from "../../context/userContext.js";
+
 const Loginform = () => {
     const navigate = useNavigate();
-    const [user, setUser] = useState({
-        username:'',
-        password: '',
-        email:''
-    });
-    const { username, password} = user;
-    const onChange = (e) => setUser({...user, [e.target.name]: e.target.value})
+    const {user, updateUser} = useContext(UserContext);
+    const { username, email, password} = user;
+    const onChange = (e) => updateUser(e.target.name, e.target.value)
 
     const onSubmit = (e) => {
       e.preventDefault();
@@ -25,7 +22,8 @@ const Loginform = () => {
       
       .then((data) => {
         if(!data.message) {
-         navigate("/profile")
+        updateUser("authenticated", true)
+        navigate("/profile")
         }
   })
     .catch((error) => {
@@ -36,15 +34,15 @@ const Loginform = () => {
     return(
         <div>
         <form className = "login-form" onSubmit={onSubmit}>
-            <label for="username">UserName/E-mail</label><br></br>
+            <label htmlFor="username">UserName/E-mail</label><br></br>
             <input type="username" placeholder="Enter user name" name="username" onChange={onChange} value={username} id="username" required></input>
             <br></br>
-            <label for="Password">Password</label><br></br>
+            <label htmlFor="Password">Password</label><br></br>
             <input type="password" placeholder="Enter password" name="password" id="password" onChange={onChange} value={password} required></input>
             <br></br>
-            <a href="Register.js" class="newaccount">New Here!!! Create Account</a>
+            <a href="Register" className="newaccount">New Here!!! Create Account</a>
             <br></br>
-            <input type="submit" id="btn-users" class="submit-button" value="Login"></input>
+            <input type="submit" id="btn-users" className="submit-button" value="Login"></input>
         </form>
         </div>
     );
